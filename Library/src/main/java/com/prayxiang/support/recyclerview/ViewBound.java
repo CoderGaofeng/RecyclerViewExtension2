@@ -32,8 +32,8 @@ public class ViewBound<T, V extends ViewDataBinding> extends ViewBinder<T, DataB
     final public DataBoundViewHolder<V> onCreateViewHolder(LayoutInflater inflater, ViewGroup parent) {
         DataBoundViewHolder<V> vh = DataBoundViewHolder.create(parent, mLayoutId, component);
         onDataBoundCreated(vh);
-        DataBoundAdapter adapter = (DataBoundAdapter) ((RecyclerView) parent).getAdapter();
-        vh.binding.addOnRebindCallback(adapter.mOnRebindCallback);
+        OnRebindCallbackProvider adapter = (OnRebindCallbackProvider) ((RecyclerView) parent).getAdapter();
+        vh.binding.addOnRebindCallback(adapter.provider());
         return vh;
     }
 

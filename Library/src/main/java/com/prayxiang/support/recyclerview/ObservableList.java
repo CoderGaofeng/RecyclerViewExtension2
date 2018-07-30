@@ -216,6 +216,8 @@ public class ObservableList<T extends Object> extends ArrayList<Object> implemen
     public void clear() {
         int oldSize = size();
         super.clear();
+        fixedOffset = 0;
+        footOffset = 0;
         if (oldSize != 0) {
             onRemoved(0, oldSize);
         }
@@ -253,6 +255,10 @@ public class ObservableList<T extends Object> extends ArrayList<Object> implemen
         onRemoved(fromIndex, toIndex - fromIndex);
     }
 
+    public void move(int fromPosition, int toPosition) {
+        Collections.swap(this, fromPosition, toPosition);
+        onMoved(fromPosition, toPosition);
+    }
 
     public void setSource(List list) {
         super.clear();

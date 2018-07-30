@@ -1,5 +1,6 @@
 package com.prayxiang.support.recyclerview;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @SuppressWarnings("all")
 public class ViewBinder<T, V extends ViewHolder> {
 
-    BaseAdapter adapter;
+   RecyclerView.Adapter adapter;
 
     public V onCreateViewHolder(LayoutInflater inflater, ViewGroup parent) {
         return null;

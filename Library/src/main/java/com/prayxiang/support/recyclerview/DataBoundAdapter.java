@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class DataBoundAdapter<T> extends BaseAdapter<T> {
+public class DataBoundAdapter<T> extends BaseAdapter<T> implements OnRebindCallbackProvider<ViewDataBinding> {
 
     private RecyclerView recyclerView;
     static final Object DB_PAYLOAD = new Object();
@@ -63,5 +63,10 @@ public class DataBoundAdapter<T> extends BaseAdapter<T> {
     public DataBoundAdapter addViewBinder(Class cls, ViewBinder viewBinder) {
         provider.addViewBinder(cls, viewBinder);
         return this;
+    }
+
+    @Override
+    public OnRebindCallback<ViewDataBinding> provider() {
+        return mOnRebindCallback;
     }
 }
